@@ -7,6 +7,8 @@ import { useTranslation } from './i18n/context';
 import AnnouncementBar from './components/AnnouncementBar';
 import BackToTopButton from './components/BackToTopButton';
 import { getPageKeyFromPath, pageRoutes } from './routes';
+import { CookieConsentProvider, useCookieConsent } from './components/cookies/CookieConsentContext';
+import { CookieBanner } from './components/cookies/CookieBanner';
 
 const HomePage = lazy(() => import('./pages/HomePage'));
 const ServicesPage = lazy(() => import('./pages/ServicesPage'));
@@ -17,15 +19,17 @@ const PrivacyPage = lazy(() => import('./pages/PrivacyPage'));
 const StorageAndCollectionPage = lazy(() => import('./pages/StorageAndCollectionPage'));
 const RecyclingProcessPage = lazy(() => import('./pages/RecyclingProcessPage'));
 const FinishedProductPage = lazy(() => import('./pages/FinishedProductPage'));
+const CookiePolicyPage = lazy(() => import('./pages/CookiePolicyPage'));
 const LazyChatWidget = lazy(() => import('./components/ChatWidget'));
 
-const App: React.FC = () => {
+const AppShell: React.FC = () => {
     const location = useLocation();
     const navigate = useNavigate();
     const { language, t } = useTranslation();
     const [isAnnouncementBarVisible, setisAnnouncementBarVisible] = useState(true);
     const [isPageEntering, setIsPageEntering] = useState(true);
     const [isChatWidgetReady, setIsChatWidgetReady] = useState(false);
+    const { openBanner } = useCookieConsent();
 
     useEffect(() => {
         const handleScroll = () => {
@@ -109,19 +113,27 @@ const App: React.FC = () => {
                         <Route path={pageRoutes.omOss} element={<AboutUsPage />} />
                         <Route path={pageRoutes.kontakt} element={<ContactPage />} />
                         <Route path={pageRoutes.personvern} element={<PrivacyPage />} />
+                        <Route path={pageRoutes.cookies} element={<CookiePolicyPage />} />
                         <Route path="*" element={<Navigate to={pageRoutes.hjem} replace />} />
                     </Routes>
                 </Suspense>
             </main>
-            <Footer onNavigate={handleNavigate} />
+            <Footer onNavigate={handleNavigate} onOpenCookieSettings={openBanner} />
             <BackToTopButton />
             {isChatWidgetReady && (
                 <Suspense fallback={null}>
                     <LazyChatWidget />
                 </Suspense>
             )}
+            <CookieBanner />
         </div>
     );
 };
+
+const App: React.FC = () => (
+    <CookieConsentProvider>
+        <AppShell />
+    </CookieConsentProvider>
+);
 
 export default App;

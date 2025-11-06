@@ -10,6 +10,7 @@ export const pageRoutes: Record<PageKey, string> = {
     omOss: '/om-oss',
     kontakt: '/kontakt',
     personvern: '/personvern',
+    cookies: '/cookies',
 };
 
 const normalizePath = (path: string) => {

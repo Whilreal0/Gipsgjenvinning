@@ -1,1 +1,11 @@
-export type PageKey = 'hjem' | 'tjenester' | 'slikFungererDet' | 'omOss' | 'kontakt' | 'personvern' | 'lagringOgHenting' | 'gjenvinningsprosessen' | 'ferdigProdukt';
+export type PageKey =
+    | 'hjem'
+    | 'tjenester'
+    | 'slikFungererDet'
+    | 'omOss'
+    | 'kontakt'
+    | 'personvern'
+    | 'lagringOgHenting'
+    | 'gjenvinningsprosessen'
+    | 'ferdigProdukt'
+    | 'cookies';

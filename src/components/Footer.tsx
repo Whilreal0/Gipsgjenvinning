@@ -9,12 +9,13 @@ import { FacebookIcon } from './icons/FacebookIcon';
 
 interface FooterProps {
     onNavigate: (page: PageKey) => void;
+    onOpenCookieSettings: () => void;
 }
 
-const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
+const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenCookieSettings }) => {
     const { t } = useTranslation();
     const navLinks: PageKey[] = ['hjem', 'tjenester', 'omOss', 'kontakt'];
-    const legalLinks: PageKey[] = ['personvern'];
+    const legalLinks: PageKey[] = ['personvern', 'cookies'];
 
     return (
         <footer className="bg-primary-dark text-white footer-bg-pattern">
@@ -66,12 +67,21 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                      <div>
                         <h3 className="font-heading text-lg font-semibold mb-3">{t('footer.legal')}</h3>
                         <ul className="space-y-1.5">
-                             {legalLinks.map(page => (
+                            {legalLinks.map(page => (
                                 <li key={page}>
-                                    <button onClick={() => onNavigate(page)} className="text-primary-light hover:text-white transition-colors">{t(`nav.${page}`)}</button>
+                                    <button onClick={() => onNavigate(page)} className="text-primary-light hover:text-white transition-colors">
+                                        {page === 'cookies' ? 'Cookie Policy' : t(`nav.${page}`)}
+                                    </button>
                                 </li>
                             ))}
                         </ul>
+                        <button
+                            type="button"
+                            onClick={onOpenCookieSettings}
+                            className="mt-3 inline-flex items-center text-sm font-semibold text-primary-light underline-offset-4 hover:text-white hover:underline"
+                        >
+                            Cookie Settings
+                        </button>
 
                         <div className="mt-5">
                             <h3 className="font-heading text-lg font-semibold mb-3">{t('footer.social.title')}</h3>
