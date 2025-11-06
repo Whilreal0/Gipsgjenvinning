@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from '../i18n/context';
 import { ChevronRightIcon } from '../components/icons/ChevronRightIcon';
@@ -44,14 +44,16 @@ const ServicesPage: React.FC = () => {
                     <ServiceSummaryCard
                         title={t('navServicesDropdown.storage')}
                         description={t('storageAndCollectionPage.subtitle')}
-                        imgSrc="/assets/value-icons/Gypsum Collection.jpg"
+                        imgWebp="/assets/value-icons/gypsum-collection.webp"
+                        imgSrc="/assets/value-icons/Gypsum Collection.webp"
                         alt={t('storageAndCollectionPage.alt')}
                         onClick={() => navigate(pageRoutes.lagringOgHenting)}
                     />
                     <ServiceSummaryCard
                         title={t('navServicesDropdown.process')}
                         description={t('recyclingProcessPage.subtitle')}
-                        imgSrc="/assets/value-icons/Recycling and Processing.jpg"
+                        imgWebp="/assets/value-icons/recycling-and-processing.webp"
+                        imgSrc="/assets/value-icons/Recycling and Processing.webp"
                         alt={t('recyclingProcessPage.alt')}
                         onClick={() => navigate(pageRoutes.gjenvinningsprosessen)}
                         reverse={true}
@@ -59,7 +61,8 @@ const ServicesPage: React.FC = () => {
                      <ServiceSummaryCard
                         title={t('navServicesDropdown.product')}
                         description={t('finishedProductPage.subtitle')}
-                        imgSrc="/assets/value-icons/Sale of Recycled Gypsum.jpg"
+                        imgWebp="/assets/value-icons/sale-of-recycled-gypsum.webp"
+                        imgSrc="/assets/value-icons/Sale of Recycled Gypsum.webp"
                         alt={t('finishedProductPage.alt')}
                         onClick={() => navigate(pageRoutes.ferdigProdukt)}
                     />

@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { useTranslation } from '../i18n/context';
 import ServiceDetail from '../components/ServiceDetail';
 
@@ -19,7 +19,8 @@ const FinishedProductPage: React.FC = () => {
                     <ServiceDetail
                         title={t('finishedProductPage.title')}
                         description={t('finishedProductPage.subtitle')}
-                        imgSrc="/assets/value-icons/Sale of Recycled Gypsum.jpg"
+                        imgWebp="/assets/value-icons/sale-of-recycled-gypsum.webp"
+                        imgSrc="/assets/value-icons/Sale of Recycled Gypsum.webp"
                         alt={t('finishedProductPage.alt')}
                         points={t('finishedProductPage.points')}
                     />

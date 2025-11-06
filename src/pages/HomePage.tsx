@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { pageRoutes } from '../routes';
 import { teamMembers } from '../data/team';
@@ -21,7 +21,7 @@ const ServiceCard: React.FC<{ imgSrc: string; title: string; description: string
 
 const ProcessStep: React.FC<{ number: string; title: string; description: string; isLast?: boolean }> = ({ number, title, description, isLast = false }) => (
     <div className="relative flex items-start">
-        <div className="flex-shrink-0 w-12 h-12 rounded-full bg-accent text-white flex items-center justify-center font-bold text-xl z-10">
+        <div className="shrink-0 w-12 h-12 rounded-full bg-accent text-white flex items-center justify-center font-bold text-xl z-10">
             {number}
         </div>
         {!isLast && <div className="absolute left-6 top-12 bottom-0 w-0.5 bg-primary-light"></div>}
@@ -35,7 +35,7 @@ const ProcessStep: React.FC<{ number: string; title: string; description: string
 const TeamMember: React.FC<{ imgSrc: string; name: string; title: string; alt: string;}> = ({ imgSrc, name, title, alt }) => (
     <div className="text-center">
         <img src={imgSrc} alt={alt} className="w-32 h-32 rounded-full mx-auto object-cover mb-4 shadow-lg" loading="lazy" />
-        <h4 className="font-heading text-lg font-bold text-primary-dark">{name}</h4>
+        <h3 className="font-heading text-lg font-bold text-primary-dark">{name}</h3>
         <p className="text-text-main">{title}</p>
     </div>
 );
@@ -45,9 +45,9 @@ const HomePage: React.FC = () => {
     const navigate = useNavigate();
 
     const values = [
-        { key: 'value1', iconSrc: '/assets/value-icons/1.png' },
-        { key: 'value2', iconSrc: '/assets/value-icons/2.png' },
-        { key: 'value3', iconSrc: '/assets/value-icons/3.png' },
+        { key: 'value1', iconSrc: '/assets/value-icons/1.webp' },
+        { key: 'value2', iconSrc: '/assets/value-icons/2.webp' },
+        { key: 'value3', iconSrc: '/assets/value-icons/3.webp' },
     ];
 
     return (
@@ -56,12 +56,12 @@ const HomePage: React.FC = () => {
             <section className="relative min-h-screen py-20 md:py-32 overflow-hidden flex items-center">
                 <div className="absolute inset-0">
                     <img
-                        src="/assets/value-icons/hero-section.jpg"
+                        src="/assets/value-icons/hero-section.webp"
                         alt={t('home.hero.title')}
                         className="w-full h-full object-cover object-[center_25%]"
-                        loading="lazy"
+                        fetchPriority="high"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-r from-primary-dark/90 via-primary-dark/80 to-primary-dark/60" />
+                    <div className="absolute inset-0 bg-linear-to-r from-primary-dark/90 via-primary-dark/80 to-primary-dark/60" />
                 </div>
                 <div className="absolute -top-1/4 -right-1/4 z-0 opacity-[0.05]">
                     <LogoIcon className="w-[800px] h-auto transform rotate-12 text-white/20" monochromeColor="#ffffff" />
@@ -75,7 +75,7 @@ const HomePage: React.FC = () => {
                             {t('home.hero.subtitle')}
                         </p>
                         <div className="mt-8 flex flex-col sm:flex-row md:justify-start justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-                            <button onClick={() => navigate(pageRoutes.tjenester)} className="bg-accent text-white font-bold py-3 px-8 rounded-full text-lg hover:bg-green-600 transition-colors duration-300 btn-lift">
+                            <button onClick={() => navigate(pageRoutes.tjenester)} className="bg-accent text-white font-bold py-3 px-8 rounded-full text-lg hover:bg-[#14553a] transition-colors duration-300 btn-lift">
                                 {t('home.hero.ctaServices')}
                             </button>
                             <button onClick={() => navigate(pageRoutes.kontakt)} className="bg-white text-primary-dark font-bold py-3 px-8 rounded-full text-lg hover:bg-gray-100 transition-colors duration-300 btn-lift border border-white/30 hover:border-white">
@@ -94,9 +94,9 @@ const HomePage: React.FC = () => {
                          <p className="mt-3 max-w-2xl mx-auto text-lg text-text-main">{t('home.services.subtitle')}</p>
                     </div>
                     <div className="grid md:grid-cols-3 gap-8">
-                        <ServiceCard imgSrc="/assets/value-icons/Gypsum Collection.jpg" title={t('home.services.card1.title')} description={t('home.services.card1.description')} alt={t('home.services.card1.alt')} />
-                        <ServiceCard imgSrc="/assets/value-icons/Recycling and Processing.jpg" title={t('home.services.card2.title')} description={t('home.services.card2.description')} alt={t('home.services.card2.alt')} />
-                        <ServiceCard imgSrc="/assets/value-icons/Sale of Recycled Gypsum.jpg" title={t('home.services.card3.title')} description={t('home.services.card3.description')} alt={t('home.services.card3.alt')} />
+                        <ServiceCard imgWebp="/assets/value-icons/gypsum-collection.webp" imgSrc="/assets/value-icons/Gypsum Collection.webp" title={t('home.services.card1.title')} description={t('home.services.card1.description')} alt={t('home.services.card1.alt')} />
+                        <ServiceCard imgWebp="/assets/value-icons/recycling-and-processing.webp" imgSrc="/assets/value-icons/Recycling and Processing.webp" title={t('home.services.card2.title')} description={t('home.services.card2.description')} alt={t('home.services.card2.alt')} />
+                        <ServiceCard imgWebp="/assets/value-icons/sale-of-recycled-gypsum.webp" imgSrc="/assets/value-icons/Sale of Recycled Gypsum.webp" title={t('home.services.card3.title')} description={t('home.services.card3.description')} alt={t('home.services.card3.alt')} />
                     </div>
                 </div>
             </section>
@@ -108,7 +108,7 @@ const HomePage: React.FC = () => {
                         <div>
                             <h2 className="text-3xl md:text-4xl font-extrabold text-primary-dark font-heading">{t('home.howItWorks.title')}</h2>
                             <p className="mt-4 text-lg text-text-main">{t('home.howItWorks.subtitle')}</p>
-                            <button onClick={() => navigate(pageRoutes.slikFungererDet)} className="mt-6 inline-flex items-center text-accent font-bold hover:underline">
+                            <button onClick={() => navigate(pageRoutes.slikFungererDet)} className="mt-6 inline-flex items-center text-primary-dark font-semibold underline underline-offset-4 hover:text-primary-dark/70">
                                 {t('home.howItWorks.link')} <ChevronRightIcon className="ml-1 h-5 w-5" />
                             </button>
                         </div>

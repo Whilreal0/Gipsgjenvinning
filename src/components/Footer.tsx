@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { PageKey } from '../types';
 import { PhoneIcon } from './icons/PhoneIcon';
 import { MailIcon } from './icons/MailIcon';
@@ -24,7 +24,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenCookieSettings }) => 
                     {/* Column 1: Logo & Info */}
                     <div className="md:col-span-1">
                         <img
-                            src="/assets/value-icons/logo.png"
+                            src="/assets/value-icons/logo.webp"
                             alt={t('header.logoLabel')}
                             className="mb-4 h-14 w-auto brightness-125 contrast-110 drop-shadow-[0_0_10px_rgba(0,0,0,0.25)]"
                         />

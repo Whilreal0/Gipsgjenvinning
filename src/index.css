@@ -6,7 +6,7 @@
   --color-primary-light: #D7EEE9;
   --color-background: #F9FBFC;
   --color-text-main: #1E2328;
-  --color-accent: #2FBF71;
+  --color-accent: #1B7A53;
   
   /* Font Families */
   --font-sans: Inter, sans-serif;
@@ -21,6 +21,10 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: Manrope, sans-serif;
+}
+
+img {
+  background-color: transparent;
 }
 
 /* Footer Background Pattern */

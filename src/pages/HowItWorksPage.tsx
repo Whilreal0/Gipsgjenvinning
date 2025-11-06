@@ -1,9 +1,9 @@
-import React from 'react';
+﻿import React from 'react';
 import { useTranslation } from '../i18n/context';
 const iconMap = [
-    '/assets/value-icons/step1.png',
-    '/assets/value-icons/step2.png',
-    '/assets/value-icons/step3.png',
+    '/assets/value-icons/step1.webp',
+    '/assets/value-icons/step2.webp',
+    '/assets/value-icons/step3.webp',
 ] as const;
 
 interface ProcessStepProps {

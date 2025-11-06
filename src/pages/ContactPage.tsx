@@ -123,7 +123,7 @@ const ContactPage: React.FC = () => {
                                             )}
                                         </div>
                                         <div>
-                                            <button type="submit" className="w-full bg-accent text-white font-bold py-3 px-6 rounded-md hover:bg-green-600 transition-colors duration-300">
+                                            <button type="submit" className="w-full bg-accent text-white font-bold py-3 px-6 rounded-md hover:bg-[#14553a] transition-colors duration-300">
                                                 {t('contactPage.form.submitButton')}
                                             </button>
                                         </div>

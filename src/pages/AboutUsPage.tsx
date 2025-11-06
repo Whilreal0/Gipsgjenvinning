@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { useTranslation } from '../i18n/context';
 import TeamMemberCard from '../components/TeamMemberCard';
 import { teamMembers } from '../data/team';
@@ -24,7 +24,7 @@ const AboutUsPage: React.FC = () => {
                         </p>
                     </div>
                     <div>
-                        <img src="/assets/value-icons/about.png" alt={t('aboutUsPage.story.alt')} className="rounded-lg shadow-lg" loading="lazy" />
+                        <img src="/assets/value-icons/about.webp" alt={t('aboutUsPage.story.alt')} className="rounded-lg shadow-lg" loading="lazy" />
                     </div>
                 </div>
             </div>

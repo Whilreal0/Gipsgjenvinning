@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+﻿import React, { useState, useRef, useEffect } from 'react';
 import { GoogleGenAI, Content } from '@google/genai';
 import { useTranslation } from '../i18n/context';
 import { ChatBubbleIcon } from './icons/ChatBubbleIcon';
@@ -75,13 +75,13 @@ const ChatWidget: React.FC = () => {
             const ai = new GoogleGenAI({ apiKey });
 
             const systemInstruction = `You are GIPS GJENVINNING Chat Assistant for Gipsgjenvinning AS.
-- Primary language: Norwegian (Bokmål). If the user writes in English, answer in English.
+- Primary language: Norwegian (BokmÃ¥l). If the user writes in English, answer in English.
 - Always give short, tidy replies without markdown bold styling.
 - Contact facts (only mention the ones requested and keep the wording clean):
-  • E-post: post@gipsgjenvinn.no
-  • Telefon: +47 410 06 505
-  • Organisasjonsnummer: 923 266 054
-  • Adresse: Habornveien 59, 1630 Gamle Fredrikstad, Norge
+  â€¢ E-post: post@gipsgjenvinn.no
+  â€¢ Telefon: +47 410 06 505
+  â€¢ Organisasjonsnummer: 923 266 054
+  â€¢ Adresse: Habornveien 59, 1630 Gamle Fredrikstad, Norge
 - Stay focused on Gipsgjenvinning AS services, processes, team, and contact information.
 - Politely refuse unrelated, harmful, or sensitive requests (e.g., API keys, code, security details).`;
 
@@ -118,8 +118,8 @@ const ChatWidget: React.FC = () => {
             >
                 <button
                     onClick={() => setIsOpen(true)}
-                    className="bg-accent text-white rounded-full p-3 shadow-lg hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent btn-lift transition-transform duration-300 hover:scale-105"
-                    aria-label="Open chat"
+                    className="bg-accent text-white rounded-full p-3 shadow-lg hover:bg-[#14553a] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent btn-lift transition-transform duration-300 hover:scale-105"
+                    aria-label={t('chatWidget.openLabel')}
                 >
                     <ChatBubbleIcon className="h-5 w-5" />
                 </button>
@@ -133,7 +133,10 @@ const ChatWidget: React.FC = () => {
                 {/* Header */}
                 <div className="flex-shrink-0 bg-primary-dark text-white p-4 flex justify-between items-center rounded-t-lg">
                     <div className="flex items-center space-x-2">
-                        <img src="/assets/LOGO_ONLY.png" alt="Gipsgjenvinning AI Assistant" className="h-6 w-6" />
+                        <picture>
+                            <source srcSet="/assets/logo-only.webp" type="image/webp" />
+                            <img src="/assets/LOGO_ONLY.webp" alt="Gipsgjenvinning AI Assistant" className="h-6 w-6" />
+                        </picture>
                         <h3 className="font-bold font-heading text-lg">{t('chatWidget.title')}</h3>
                     </div>
                     <button onClick={() => setIsOpen(false)} aria-label="Close chat" className="rounded-full p-1 transition hover:bg-white/20">
@@ -177,7 +180,8 @@ const ChatWidget: React.FC = () => {
                         <button
                             onClick={handleSend}
                             disabled={isLoading || inputValue.trim() === ''}
-                            className="bg-accent text-white p-3 rounded-md hover:bg-green-600 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors"
+                            className="bg-accent text-white p-3 rounded-md hover:bg-[#166447] disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors"
+                            aria-label={t('chatWidget.sendLabel')}
                         >
                             <PaperAirplaneIcon className="h-5 w-5" />
                         </button>

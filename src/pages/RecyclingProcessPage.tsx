@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { useTranslation } from '../i18n/context';
 import { CheckCircleIcon } from '../components/icons/CheckCircleIcon';
 import { CheckIcon } from '../components/icons/CheckIcon';
@@ -9,27 +9,44 @@ const RecyclingProcessPage: React.FC = () => {
 
     return (
         <>
-            <div className="bg-primary-light text-primary-dark py-16">
-                <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                    <h1 className="text-4xl md:text-5xl font-extrabold font-heading">
-                        {t('recyclingProcessPage.title')}
-                    </h1>
-                    <p className="mt-4 text-xl text-text-main max-w-3xl mx-auto">
-                        {t('recyclingProcessPage.subtitle')}
-                    </p>
-                    <p className="mt-6 text-lg text-text-main max-w-4xl mx-auto">
-                        {t('recyclingProcessPage.summary')}
-                    </p>
-                    <div className="mt-10 max-w-5xl mx-auto">
-                        <img
-                            src="/assets/value-icons/Recycling and Processing.jpg"
-                            alt={t('recyclingProcessPage.imageAlt')}
-                            className="w-full h-96 object-cover rounded-2xl shadow-xl border border-white/40"
-                            loading="lazy"
-                        />
+            <section className="bg-background py-16 md:py-20">
+                <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="mx-auto max-w-3xl text-center">
+                        <h1 className="text-4xl md:text-5xl font-extrabold font-heading text-primary-dark">
+                            {t('recyclingProcessPage.title')}
+                        </h1>
+                        <p className="mt-4 text-lg md:text-xl text-text-main">
+                            {t('recyclingProcessPage.subtitle')}
+                        </p>
                     </div>
                 </div>
-            </div>
+            </section>
+
+            <section className="bg-background pb-12">
+                <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="mx-auto grid max-w-5xl items-center gap-8 md:grid-cols-2">
+                        <div className="space-y-5 text-text-main">
+                            <p className="text-lg leading-relaxed font-semibold text-primary-dark">
+                                {t('recyclingProcessPage.summary')}
+                            </p>
+                            <p className="text-base leading-relaxed text-text-main/85">
+                                {t('recyclingProcessPage.details.intro.p1')}
+                            </p>
+                        </div>
+                        <div className="rounded-3xl overflow-hidden shadow-lg">
+                            <picture>
+                                <source srcSet="/assets/value-icons/recycling-and-processing.webp" type="image/webp" />
+                                <img
+                                    src="/assets/value-icons/Recycling and Processing.webp"
+                                    alt={t('recyclingProcessPage.imageAlt')}
+                                    className="h-[260px] w-full object-cover sm:h-80 lg:h-[340px]"
+                                    loading="lazy"
+                                />
+                            </picture>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
             <div className="py-16 sm:py-24 bg-background">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -53,7 +70,7 @@ const RecyclingProcessPage: React.FC = () => {
                         <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6 text-lg">
                             {t('recyclingProcessPage.details.why.points').map((point: string) => (
                                 <li key={point} className="flex items-start">
-                                    <CheckCircleIcon className="h-6 w-6 text-accent mr-3 mt-1 flex-shrink-0" />
+                                    <CheckCircleIcon className="h-6 w-6 text-accent mr-3 mt-1 shrink-0" />
                                     <span>{point}</span>
                                 </li>
                             ))}
@@ -72,7 +89,7 @@ const RecyclingProcessPage: React.FC = () => {
                             <ul className="mt-6 space-y-4 text-lg">
                                 {t('recyclingProcessPage.details.can.points').map((point: string) => (
                                     <li key={point} className="flex items-start">
-                                        <CheckIcon className="h-6 w-6 text-accent mr-3 mt-1 flex-shrink-0" />
+                                        <CheckIcon className="h-6 w-6 text-accent mr-3 mt-1 shrink-0" />
                                         <span>{point}</span>
                                     </li>
                                 ))}
@@ -89,7 +106,7 @@ const RecyclingProcessPage: React.FC = () => {
                             <ul className="mt-6 space-y-4 text-lg">
                                 {t('recyclingProcessPage.details.cannot.points').map((point: string) => (
                                     <li key={point} className="flex items-start">
-                                        <XIcon className="h-6 w-6 text-red-500 mr-3 mt-1 flex-shrink-0" />
+                                        <XIcon className="h-6 w-6 text-red-500 mr-3 mt-1 shrink-0" />
                                         <span>{point}</span>
                                     </li>
                                 ))}

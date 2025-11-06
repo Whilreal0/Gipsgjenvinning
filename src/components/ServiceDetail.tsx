@@ -5,15 +5,19 @@ interface ServiceDetailProps {
     title: string;
     description: string;
     imgSrc: string;
+    imgWebp?: string;
     alt: string;
     points: string[];
     reverse?: boolean;
 }
 
-const ServiceDetail: React.FC<ServiceDetailProps> = ({ title, description, imgSrc, alt, points, reverse = false }) => (
+const ServiceDetail: React.FC<ServiceDetailProps> = ({ title, description, imgSrc, imgWebp, alt, points, reverse = false }) => (
     <div className={`flex flex-col md:flex-row items-center gap-12 ${reverse ? 'md:flex-row-reverse' : ''}`}>
         <div className="md:w-1/2">
-            <img src={imgSrc} alt={alt} className="rounded-lg shadow-lg w-full h-auto object-cover" loading="lazy" />
+            <picture>
+                {imgWebp && <source srcSet={imgWebp} type="image/webp" />}
+                <img src={imgSrc} alt={alt} className="rounded-lg shadow-lg w-full h-auto object-cover" loading="lazy" />
+            </picture>
         </div>
         <div className="md:w-1/2">
             <h2 className="text-3xl font-bold font-heading text-primary-dark mb-4">{title}</h2>

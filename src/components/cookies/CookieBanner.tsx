@@ -35,7 +35,7 @@ export const CookieBanner: React.FC = () => {
                         <button
                             type="button"
                             onClick={acceptAll}
-                            className="w-full sm:w-auto rounded-full bg-accent px-4 py-2 text-sm font-semibold text-white transition hover:bg-green-600"
+                            className="w-full sm:w-auto rounded-full bg-accent px-4 py-2 text-sm font-semibold text-white transition hover:bg-[#14553a]"
                         >
                             Accept all cookies
                         </button>

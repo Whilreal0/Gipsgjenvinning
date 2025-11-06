@@ -1,4 +1,4 @@
-
+﻿
 
 import React, { useState, useEffect, useRef } from 'react';
 import { PageKey } from '../types';
@@ -115,7 +115,7 @@ const Header: React.FC<HeaderProps> = ({ currentPage, onNavigate }) => {
                             aria-label={t('header.logoLabel')}
                         >
                             <img
-                                src="/assets/value-icons/logo.png"
+                                src="/assets/value-icons/logo.webp"
                                 alt={t('header.logoLabel')}
                                 className="h-14 w-auto"
                             />
@@ -155,7 +155,7 @@ const Header: React.FC<HeaderProps> = ({ currentPage, onNavigate }) => {
                         {/* Language switcher tucked into mobile menu only */}
                         <button
                             onClick={() => handleLinkClick('kontakt')}
-                            className="bg-accent text-white font-bold py-2 px-5 rounded-full text-sm hover:bg-green-600 transition-colors duration-300 btn-lift"
+                            className="bg-accent text-white font-bold py-2 px-5 rounded-full text-sm hover:bg-[#14553a] transition-colors duration-300 btn-lift"
                         >
                             {t('header.cta')}
                         </button>
@@ -216,7 +216,7 @@ const Header: React.FC<HeaderProps> = ({ currentPage, onNavigate }) => {
                     <div className="px-4 py-3 border-t border-gray-200">
                         <button
                             onClick={() => handleLinkClick('kontakt')}
-                            className="w-full bg-accent text-white font-bold py-3 px-6 rounded-full hover:bg-green-600 transition-colors duration-300 text-base"
+                            className="w-full bg-accent text-white font-bold py-3 px-6 rounded-full hover:bg-[#14553a] transition-colors duration-300 text-base"
                         >
                             {t('header.cta')}
                         </button>

@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { useTranslation } from '../i18n/context';
 import ServiceDetail from '../components/ServiceDetail';
 
@@ -19,7 +19,8 @@ const StorageAndCollectionPage: React.FC = () => {
                     <ServiceDetail
                         title={t('storageAndCollectionPage.title')}
                         description={t('storageAndCollectionPage.subtitle')}
-                        imgSrc="/assets/value-icons/Gypsum Collection.jpg"
+                        imgWebp="/assets/value-icons/gypsum-collection.webp"
+                        imgSrc="/assets/value-icons/Gypsum Collection.webp"
                         alt={t('storageAndCollectionPage.alt')}
                         points={t('storageAndCollectionPage.points')}
                     />
