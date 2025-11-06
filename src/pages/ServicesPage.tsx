@@ -32,10 +32,10 @@ const ServicesPage: React.FC = () => {
 
     return (
         <>
-            <div className="bg-primary-dark text-white py-16">
+            <div className="bg-primary-light text-primary-dark py-16">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
                     <h1 className="text-4xl md:text-5xl font-extrabold font-heading">{t('pageTitles.tjenester')}</h1>
-                    <p className="mt-4 text-xl text-primary-light max-w-3xl mx-auto">{t('servicesPage.subtitle')}</p>
+                    <p className="mt-4 text-xl text-text-main max-w-3xl mx-auto">{t('servicesPage.subtitle')}</p>
                 </div>
             </div>
 

@@ -9,7 +9,7 @@ const RecyclingProcessPage: React.FC = () => {
 
     return (
         <>
-            <section className="bg-background py-16 md:py-20">
+            <section className="bg-primary-light py-16 md:py-20">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="mx-auto max-w-3xl text-center">
                         <h1 className="text-4xl md:text-5xl font-extrabold font-heading text-primary-dark">
@@ -22,11 +22,11 @@ const RecyclingProcessPage: React.FC = () => {
                 </div>
             </section>
 
-            <section className="bg-background pb-12">
+            <section className="pt-16 sm:pt-24 bg-white">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="mx-auto grid max-w-5xl items-center gap-8 md:grid-cols-2">
                         <div className="space-y-5 text-text-main">
-                            <p className="text-lg leading-relaxed font-semibold text-primary-dark">
+                            <p className="text-lg leading-relaxed text-text-main/85">
                                 {t('recyclingProcessPage.summary')}
                             </p>
                             <p className="text-base leading-relaxed text-text-main/85">
@@ -51,7 +51,7 @@ const RecyclingProcessPage: React.FC = () => {
             <div className="py-16 sm:py-24 bg-background">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="max-w-4xl mx-auto text-center">
-                        <h2 className="text-3xl font-bold font-heading text-primary-dark">
+                        <h2 className="text-3xl font-bold font-heading text-text-main">
                             {t('recyclingProcessPage.details.intro.title')}
                         </h2>
                         <p className="mt-4 text-lg text-text-main">

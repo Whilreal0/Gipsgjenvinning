@@ -9,7 +9,7 @@ const PrivacyPage: React.FC = () => {
 
     return (
         <>
-            <section className="bg-white py-16 sm:py-24">
+            <section className="bg-primary-lightwhite py-16 sm:py-24">
                 <div className="container mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
                     <header className="mb-12 text-left">
                         <h1 className="text-4xl font-extrabold font-heading text-primary-dark">{t('privacyPage.section7.title')}</h1>

@@ -6,17 +6,33 @@ import { ChevronRightIcon } from '../components/icons/ChevronRightIcon';
 import { useTranslation } from '../i18n/context';
 import { LogoIcon } from '../components/icons/LogoIcon';
 
-const ServiceCard: React.FC<{ imgSrc: string; title: string; description: string; alt: string }> = ({ imgSrc, title, description, alt }) => (
-    <div className="bg-white rounded-lg shadow-md overflow-hidden group relative transform transition duration-300 hover:shadow-xl hover:-translate-y-2">
-        <div className="absolute top-0 left-0 h-1.5 bg-accent w-0 group-hover:w-full transition-all duration-500 z-10"></div>
+type ServiceCardProps = {
+    imgWebp: string;
+    imgSrc: string;
+    title: string;
+    description: string;
+    alt: string;
+    onClick: () => void;
+};
+
+const ServiceCard: React.FC<ServiceCardProps> = ({ imgWebp, imgSrc, title, description, alt, onClick }) => (
+    <button
+        type="button"
+        onClick={onClick}
+        className="group relative flex w-full flex-col rounded-lg bg-white text-left shadow-md transition duration-300 hover:-translate-y-2 hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 cursor-pointer overflow-hidden"
+    >
+        <span className="absolute top-0 left-0 h-1.5 w-0 bg-accent transition-all duration-500 group-hover:w-full" />
         <div className="overflow-hidden">
-            <img src={imgSrc} alt={alt} className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500 ease-out" loading="lazy" />
+            <picture>
+                <source srcSet={imgWebp} type="image/webp" />
+                <img src={imgSrc} alt={alt} className="h-48 w-full object-cover transition-transform duration-500 ease-out group-hover:scale-105" loading="lazy" />
+            </picture>
         </div>
         <div className="p-6">
             <h3 className="font-heading text-xl font-bold text-primary-dark mb-2">{title}</h3>
             <p className="text-text-main">{description}</p>
         </div>
-    </div>
+    </button>
 );
 
 const ProcessStep: React.FC<{ number: string; title: string; description: string; isLast?: boolean }> = ({ number, title, description, isLast = false }) => (
@@ -94,9 +110,30 @@ const HomePage: React.FC = () => {
                          <p className="mt-3 max-w-2xl mx-auto text-lg text-text-main">{t('home.services.subtitle')}</p>
                     </div>
                     <div className="grid md:grid-cols-3 gap-8">
-                        <ServiceCard imgWebp="/assets/value-icons/gypsum-collection.webp" imgSrc="/assets/value-icons/Gypsum Collection.webp" title={t('home.services.card1.title')} description={t('home.services.card1.description')} alt={t('home.services.card1.alt')} />
-                        <ServiceCard imgWebp="/assets/value-icons/recycling-and-processing.webp" imgSrc="/assets/value-icons/Recycling and Processing.webp" title={t('home.services.card2.title')} description={t('home.services.card2.description')} alt={t('home.services.card2.alt')} />
-                        <ServiceCard imgWebp="/assets/value-icons/sale-of-recycled-gypsum.webp" imgSrc="/assets/value-icons/Sale of Recycled Gypsum.webp" title={t('home.services.card3.title')} description={t('home.services.card3.description')} alt={t('home.services.card3.alt')} />
+                        <ServiceCard
+                            imgWebp="/assets/value-icons/gypsum-collection.webp"
+                            imgSrc="/assets/value-icons/Gypsum Collection.webp"
+                            title={t('home.services.card1.title')}
+                            description={t('home.services.card1.description')}
+                            alt={t('home.services.card1.alt')}
+                            onClick={() => navigate(pageRoutes.lagringOgHenting)}
+                        />
+                        <ServiceCard
+                            imgWebp="/assets/value-icons/recycling-and-processing.webp"
+                            imgSrc="/assets/value-icons/Recycling and Processing.webp"
+                            title={t('home.services.card2.title')}
+                            description={t('home.services.card2.description')}
+                            alt={t('home.services.card2.alt')}
+                            onClick={() => navigate(pageRoutes.gjenvinningsprosessen)}
+                        />
+                        <ServiceCard
+                            imgWebp="/assets/value-icons/sale-of-recycled-gypsum.webp"
+                            imgSrc="/assets/value-icons/Sale of Recycled Gypsum.webp"
+                            title={t('home.services.card3.title')}
+                            description={t('home.services.card3.description')}
+                            alt={t('home.services.card3.alt')}
+                            onClick={() => navigate(pageRoutes.ferdigProdukt)}
+                        />
                     </div>
                 </div>
             </section>

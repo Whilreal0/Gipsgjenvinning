@@ -58,7 +58,7 @@ const ContactPage: React.FC = () => {
 
     return (
         <>
-            <div className="bg-white py-16">
+            <div className="bg-primary-light py-16">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
                     <h1 className="text-4xl md:text-5xl font-extrabold font-heading text-primary-dark">{t('contactPage.title')}</h1>
                     <p className="mt-4 text-xl text-text-main max-w-3xl mx-auto">{t('contactPage.subtitle')}</p>

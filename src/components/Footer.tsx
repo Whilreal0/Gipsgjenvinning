@@ -38,7 +38,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenCookieSettings }) => 
                         <ul className="space-y-1.5">
                             {navLinks.map(page => (
                                 <li key={page}>
-                                    <button onClick={() => onNavigate(page)} className="text-primary-light hover:text-white transition-colors">{t(`nav.${page}`)}</button>
+                                    <button onClick={() => onNavigate(page)} className="cursor-pointer text-primary-light hover:text-white transition-colors">{t(`nav.${page}`)}</button>
                                 </li>
                             ))}
                         </ul>
@@ -54,11 +54,11 @@ const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenCookieSettings }) => 
                             </li>
                             <li className="flex items-center">
                                 <PhoneIcon className="h-5 w-5 mr-3" />
-                                <a href={`tel:+47${t('footer.phone').replace(/\s/g, '')}`} className="hover:text-white transition-colors">{t('footer.phone')}</a>
+                                <a href={`tel:+47${t('footer.phone').replace(/\s/g, '')}`} className="cursor-pointer hover:text-white transition-colors">{t('footer.phone')}</a>
                             </li>
                             <li className="flex items-center">
                                 <MailIcon className="h-5 w-5 mr-3" />
-                                <a href={`mailto:${t('footer.email')}`} className="hover:text-white transition-colors">{t('footer.email')}</a>
+                                <a href={`mailto:${t('footer.email')}`} className="cursor-pointer hover:text-white transition-colors">{t('footer.email')}</a>
                             </li>
                         </ul>
                     </div>
@@ -69,7 +69,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenCookieSettings }) => 
                         <ul className="space-y-1.5">
                             {legalLinks.map(page => (
                                 <li key={page}>
-                                    <button onClick={() => onNavigate(page)} className="text-primary-light hover:text-white transition-colors">
+                                    <button onClick={() => onNavigate(page)} className="cursor-pointer text-primary-light hover:text-white transition-colors">
                                         {page === 'cookies' ? 'Cookie Policy' : t(`nav.${page}`)}
                                     </button>
                                 </li>
@@ -78,7 +78,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenCookieSettings }) => 
                         <button
                             type="button"
                             onClick={onOpenCookieSettings}
-                            className="mt-3 inline-flex items-center text-sm font-semibold text-primary-light underline-offset-4 hover:text-white hover:underline"
+                            className="mt-3 inline-flex items-center text-sm font-semibold text-primary-light underline-offset-4 hover:text-white hover:underline cursor-pointer"
                         >
                             Cookie Settings
                         </button>
@@ -86,10 +86,10 @@ const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenCookieSettings }) => 
                         <div className="mt-5">
                             <h3 className="font-heading text-lg font-semibold mb-3">{t('footer.social.title')}</h3>
                             <div className="flex space-x-4">
-                                <a href={t('footer.social.linkedinUrl')} target="_blank" rel="noopener noreferrer" aria-label={t('footer.social.linkedinAria')} className="text-primary-light hover:text-white transition-colors">
+                                <a href={t('footer.social.linkedinUrl')} target="_blank" rel="noopener noreferrer" aria-label={t('footer.social.linkedinAria')} className="cursor-pointer text-primary-light hover:text-white transition-colors">
                                     <LinkedInIcon className="h-6 w-6" />
                                 </a>
-                                <a href={t('footer.social.facebookUrl')} target="_blank" rel="noopener noreferrer" aria-label={t('footer.social.facebookAria')} className="text-primary-light hover:text-white transition-colors">
+                                <a href={t('footer.social.facebookUrl')} target="_blank" rel="noopener noreferrer" aria-label={t('footer.social.facebookAria')} className="cursor-pointer text-primary-light hover:text-white transition-colors">
                                     <FacebookIcon className="h-6 w-6" />
                                 </a>
                             </div>

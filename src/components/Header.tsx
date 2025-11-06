@@ -1,7 +1,9 @@
 ﻿
 
 import React, { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { PageKey } from '../types';
+import { pageRoutes } from '../routes';
 import { MenuIcon } from './icons/MenuIcon';
 import { CloseIcon } from './icons/CloseIcon';
 import { ChevronDownIcon } from './icons/ChevronDownIcon';
@@ -46,6 +48,7 @@ const Header: React.FC<HeaderProps> = ({ currentPage, onNavigate }) => {
     const { t } = useTranslation();
     const servicesTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
     const bodyOverflowRef = useRef<string>('');
+    const mobileMenuRef = useRef<HTMLDivElement | null>(null);
 
     useEffect(() => {
         const handleScroll = () => setIsScrolled(window.scrollY > 10);
@@ -53,10 +56,19 @@ const Header: React.FC<HeaderProps> = ({ currentPage, onNavigate }) => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
+    const blurMobileMenuFocus = () => {
+        if (typeof document === 'undefined') return;
+        const activeElement = document.activeElement as HTMLElement | null;
+        if (activeElement && mobileMenuRef.current?.contains(activeElement)) {
+            activeElement.blur();
+        }
+    };
+
     const handleLinkClick = (page: PageKey) => {
         onNavigate(page);
         setIsMenuOpen(false);
         setIsMobileServicesOpen(false);
+        blurMobileMenuFocus();
     };
 
     const handleDropdownClick = (page: PageKey) => {
@@ -64,6 +76,7 @@ const Header: React.FC<HeaderProps> = ({ currentPage, onNavigate }) => {
       setIsServicesOpen(false);
       setIsMenuOpen(false);
       setIsMobileServicesOpen(false);
+      blurMobileMenuFocus();
     };
 
     const handleMouseEnter = () => {
@@ -101,6 +114,7 @@ const Header: React.FC<HeaderProps> = ({ currentPage, onNavigate }) => {
             window.dispatchEvent(new CustomEvent('chat:close'));
         } else {
             setIsMobileServicesOpen(false);
+            blurMobileMenuFocus();
         }
     };
 
@@ -109,9 +123,10 @@ const Header: React.FC<HeaderProps> = ({ currentPage, onNavigate }) => {
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between h-20">
                     <div className="flex items-center">
-                        <button
+                        <Link
+                            to={pageRoutes.hjem}
                             onClick={() => handleLinkClick('hjem')}
-                            className="flex items-center"
+                            className="flex items-center cursor-pointer"
                             aria-label={t('header.logoLabel')}
                         >
                             <img
@@ -119,7 +134,7 @@ const Header: React.FC<HeaderProps> = ({ currentPage, onNavigate }) => {
                                 alt={t('header.logoLabel')}
                                 className="h-14 w-auto"
                             />
-                        </button>
+                        </Link>
                     </div>
                     <div className="hidden md:flex items-center space-x-4">
                         <nav className="flex items-center space-x-1">
@@ -129,7 +144,7 @@ const Header: React.FC<HeaderProps> = ({ currentPage, onNavigate }) => {
                                 <div key={link.page} className="relative" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
                                     <button
                                         onClick={() => handleLinkClick(link.page)}
-                                        className={`flex items-center px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200 ${isActive ? 'text-accent font-semibold' : 'text-text-main hover:text-primary-dark hover:bg-primary-light'}`}
+                                        className={`cursor-pointer flex items-center px-4 py-2 rounded-md text-sm font-medium uppercase transition-colors duration-200 ${isActive ? 'text-accent font-semibold' : 'text-text-main hover:text-primary-dark hover:bg-primary-light'}`}
                                         aria-current={isActive ? 'page' : undefined}
                                         aria-haspopup="true"
                                         aria-expanded={isServicesOpen}
@@ -140,13 +155,13 @@ const Header: React.FC<HeaderProps> = ({ currentPage, onNavigate }) => {
                                     {isServicesOpen && (
                                         <div className="absolute left-1/2 -translate-x-1/2 mt-2 w-56 bg-white rounded-md shadow-lg py-1 z-50 border border-gray-200/50">
                                             {link.dropdown.map(item => (
-                                                <button key={item.page} onClick={() => handleDropdownClick(item.page)} className="block w-full text-left px-4 py-2 text-sm text-text-main hover:bg-primary-light hover:text-primary-dark">{t(item.label)}</button>
+                                                <button key={item.page} onClick={() => handleDropdownClick(item.page)} className="cursor-pointer block w-full text-left px-4 py-2 text-sm uppercase text-text-main hover:bg-primary-light hover:text-primary-dark">{t(item.label)}</button>
                                             ))}
                                         </div>
                                     )}
                                 </div>
                             ) : (
-                                <button key={link.page} onClick={() => handleLinkClick(link.page)} className={`px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200 ${isActive ? 'text-accent font-semibold' : 'text-text-main hover:text-primary-dark hover:bg-primary-light'}`} aria-current={isActive ? 'page' : undefined}>
+                                <button key={link.page} onClick={() => handleLinkClick(link.page)} className={`cursor-pointer px-4 py-2 rounded-md text-sm font-medium uppercase transition-colors duration-200 ${isActive ? 'text-accent font-semibold' : 'text-text-main hover:text-primary-dark hover:bg-primary-light'}`} aria-current={isActive ? 'page' : undefined}>
                                     {t(link.label)}
                                 </button>
                             );
@@ -155,13 +170,13 @@ const Header: React.FC<HeaderProps> = ({ currentPage, onNavigate }) => {
                         {/* Language switcher tucked into mobile menu only */}
                         <button
                             onClick={() => handleLinkClick('kontakt')}
-                            className="bg-accent text-white font-bold py-2 px-5 rounded-full text-sm hover:bg-[#14553a] transition-colors duration-300 btn-lift"
+                            className="cursor-pointer bg-accent text-white font-bold py-2 px-5 rounded-full text-sm uppercase hover:bg-[#14553a] transition-colors duration-300 btn-lift"
                         >
                             {t('header.cta')}
                         </button>
                     </div>
                     <div className="md:hidden flex items-center">
-                        <button onClick={toggleMenu} aria-label={isMenuOpen ? t('header.closeMenu') : t('header.openMenu')} aria-expanded={isMenuOpen}>
+                        <button className="cursor-pointer" onClick={toggleMenu} aria-label={isMenuOpen ? t('header.closeMenu') : t('header.openMenu')} aria-expanded={isMenuOpen}>
                            {isMenuOpen ? <CloseIcon className="h-7 w-7 text-text-main" /> : <MenuIcon className="h-7 w-7 text-text-main" />}
                         </button>
                     </div>
@@ -169,10 +184,11 @@ const Header: React.FC<HeaderProps> = ({ currentPage, onNavigate }) => {
             </div>
 
             <div
+                ref={mobileMenuRef}
                 className={`md:hidden fixed inset-0 top-20 z-30 transition-opacity duration-300 ${
                     isMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
                 }`}
-                aria-hidden={!isMenuOpen}
+                aria-hidden={isMenuOpen ? undefined : true}
             >
                 <div
                     className={`absolute inset-0 bg-black/40 backdrop-blur-md transition-opacity duration-300 ${
@@ -192,7 +208,7 @@ const Header: React.FC<HeaderProps> = ({ currentPage, onNavigate }) => {
                            <div key={link.page}>
                                <button
                                    onClick={() => link.dropdown ? setIsMobileServicesOpen(!isMobileServicesOpen) : handleLinkClick(link.page)}
-                                   className={`flex items-center justify-center w-full px-4 py-2 rounded-md text-base font-medium transition-colors duration-200 ${isActive ? 'text-accent font-semibold' : 'text-text-main hover:text-primary-dark hover:bg-primary-light'}`}
+                                   className={`cursor-pointer flex items-center justify-center w-full px-4 py-2 rounded-md text-base font-medium uppercase transition-colors duration-200 ${isActive ? 'text-accent font-semibold' : 'text-text-main hover:text-primary-dark hover:bg-primary-light'}`}
                                >
                                    {t(link.label)}
                                    {link.dropdown && <ChevronDownIcon className={`ml-1 h-4 w-4 transition-transform duration-200 ${isMobileServicesOpen ? 'transform rotate-180' : ''}`} />}
@@ -200,7 +216,7 @@ const Header: React.FC<HeaderProps> = ({ currentPage, onNavigate }) => {
                                {link.dropdown && isMobileServicesOpen && (
                                    <div className="pl-4 mt-1 space-y-1">
                                        {link.dropdown.map(item => (
-                                           <button key={item.page} onClick={() => handleDropdownClick(item.page)} className="block w-full text-center px-4 py-2 text-sm rounded-md text-gray-600 hover:bg-primary-light hover:text-primary-dark">{t(item.label)}</button>
+                                           <button key={item.page} onClick={() => handleDropdownClick(item.page)} className="cursor-pointer block w-full text-center px-4 py-2 text-sm rounded-md uppercase text-gray-600 hover:bg-primary-light hover:text-primary-dark">{t(item.label)}</button>
                                        ))}
                                    </div>
                                )}
@@ -216,7 +232,7 @@ const Header: React.FC<HeaderProps> = ({ currentPage, onNavigate }) => {
                     <div className="px-4 py-3 border-t border-gray-200">
                         <button
                             onClick={() => handleLinkClick('kontakt')}
-                            className="w-full bg-accent text-white font-bold py-3 px-6 rounded-full hover:bg-[#14553a] transition-colors duration-300 text-base"
+                            className="cursor-pointer w-full bg-accent text-white font-bold py-3 px-6 rounded-full uppercase hover:bg-[#14553a] transition-colors duration-300 text-base"
                         >
                             {t('header.cta')}
                         </button>
