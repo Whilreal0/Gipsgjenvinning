@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gipsgjenvinning AS</title>
+    <meta name="description" content="Bærekraftig gjenvinning av gipsavfall for bedrifter i hele Norge.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@700;800&display=swap" rel="stylesheet">
+    
+    <link href="https://api.mapbox.com/mapbox-gl-js/v3.4.0/mapbox-gl.css" rel="stylesheet" />
+    <script src="https://api.mapbox.com/mapbox-gl-js/v3.4.0/mapbox-gl.js"></script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'primary-dark': '#0E4B4F',
+            'primary-light': '#D7EEE9',
+            'background': '#F9FBFC',
+            'text-main': '#1E2328',
+            'accent': '#2FBF71',
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            heading: ['Manrope', 'sans-serif'],
+          },
+        },
+      },
+    };
+    </script>
+    
+    <style>
+      body {
+        font-family: 'Inter', sans-serif;
+        color: #1E2328;
+        background-color: #F9FBFC;
+      }
+      h1, h2, h3, h4, h5, h6 {
+        font-family: 'Manrope', sans-serif;
+      }
+      
+      /* Footer Background Pattern */
+      .footer-bg-pattern {
+        background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23D7EEE9' fill-opacity='0.04' fill-rule='evenodd'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40'/%3E%3C/g%3E%3C/svg%3E");
+        background-color: #0E4B4F;
+      }
+
+      /* Enhanced button hover effect */
+      .btn-lift {
+        transition-property: transform, box-shadow;
+        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+        transition-duration: 200ms;
+      }
+      .btn-lift:hover {
+          transform: translateY(-3px);
+          box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.07), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      }
+    </style>
+
+    <!-- Schema.org markup for LocalBusiness -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Gipsgjenvinning AS",
+      "image": "https://picsum.photos/1200/630",
+      "@id": "",
+      "url": "https://www.gipsgjenvinning.no",
+      "telephone": "+47 410 06 505",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Habornveien 59",
+        "addressLocality": "GAMLE FREDRIKSTAD",
+        "postalCode": "1630",
+        "addressCountry": "NO"
+      },
+      "description": "Spesialist på bærekraftig innsamling og gjenvinning av gipsavfall for bedrifter.",
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "opens": "08:00",
+        "closes": "16:00"
+      }
+    }
+    </script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+</body>
+</html>

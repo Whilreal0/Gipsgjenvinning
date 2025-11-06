@@ -1,0 +1,228 @@
+{
+  "nav": {
+    "hjem": "Home",
+    "tjenester": "Services",
+    "slikFungererDet": "How It Works",
+    "omOss": "About Us",
+    "kontakt": "Contact",
+    "personvern": "Privacy Policy"
+  },
+  "pageTitles": {
+    "hjem": "Gipsgjenvinning AS - Sustainable Gypsum Waste Recycling",
+    "tjenester": "Our Services - Gipsgjenvinning AS",
+    "slikFungererDet": "How It Works - Gipsgjenvinning AS",
+    "omOss": "About Us - Gipsgjenvinning AS",
+    "kontakt": "Contact Us - Gipsgjenvinning AS",
+    "personvern": "Privacy Policy - Gipsgjenvinning AS"
+  },
+  "pageDescriptions": {
+    "hjem": "We offer efficient and eco-friendly solutions for collecting and recycling gypsum for businesses throughout Norway.",
+    "tjenester": "Explore our comprehensive services for collection, recycling, and sale of recycled gypsum.",
+    "slikFungererDet": "Learn about our simple and transparent three-step process for gypsum recycling.",
+    "omOss": "Get to know the team and the story behind Gipsgjenvinning AS, Norway's leading company in gypsum recycling.",
+    "kontakt": "Contact us for a no-obligation chat about how we can help your company with sustainable waste management.",
+    "personvern": "Read our privacy policy to understand how we process and protect your data."
+  },
+  "header": {
+    "logoLabel": "Gipsgjenvinning AS Homepage",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
+  },
+  "footer": {
+    "tagline": "Sustainable recycling of gypsum waste for a greener future.",
+    "orgNr": "ORG No. 987 654 321",
+    "menu": "Menu",
+    "contact": "Contact Us",
+    "address": "Industriveien 10, 0123 Oslo, Norway",
+    "legal": "Legal",
+    "copyright": "All rights reserved."
+  },
+  "home": {
+    "hero": {
+      "title": "Sustainable Recycling of Gypsum Waste",
+      "subtitle": "We offer efficient and environmentally friendly solutions for the collection and recycling of gypsum for businesses throughout Norway.",
+      "ctaServices": "See Our Services",
+      "ctaContact": "Contact Us"
+    },
+    "services": {
+      "title": "Our Services",
+      "subtitle": "We cover the entire value chain, from collection to the finished recycled product.",
+      "card1": {
+        "title": "Gypsum Collection",
+        "description": "Efficient and reliable collection of gypsum waste from construction sites and businesses across the country.",
+        "alt": "Truck collecting gypsum waste at a construction site."
+      },
+      "card2": {
+        "title": "Recycling and Processing",
+        "description": "Modern facilities for sorting, cleaning, and processing gypsum into a high-quality recycled raw material.",
+        "alt": "Industrial facility for gypsum recycling."
+      },
+      "card3": {
+        "title": "Sale of Recycled Gypsum",
+        "description": "We supply recycled gypsum powder as a sustainable alternative for the production of new plasterboards and other products.",
+        "alt": "Pile of fine recycled gypsum powder."
+      }
+    },
+    "howItWorks": {
+      "title": "How It Works",
+      "subtitle": "Our process is simple, efficient, and designed to make recycling as smooth as possible for you.",
+      "link": "Learn more about the process",
+      "step1": {
+        "title": "Order & Delivery",
+        "description": "Contact us to order collection. We deliver suitable containers for the gypsum waste."
+      },
+      "step2": {
+        "title": "Collection & Transport",
+        "description": "We collect the waste at the agreed time and transport it safely to our facility."
+      },
+      "step3": {
+        "title": "Recycling & Reporting",
+        "description": "The gypsum is recycled, and you receive an environmental report documenting your efforts."
+      }
+    },
+    "about": {
+      "title": "Meet Our Team",
+      "subtitle": "We are a dedicated group with a passion for the environment and sustainable solutions.",
+      "member1": { "name": "Kari Nordmann", "title": "CEO", "alt": "Portrait of Kari Nordmann, CEO." },
+      "member2": { "name": "Ola Johansen", "title": "Operations Manager", "alt": "Portrait of Ola Johansen, Operations Manager." },
+      "member3": { "name": "Silje Eriksen", "title": "Logistics Manager", "alt": "Portrait of Silje Eriksen, Logistics Manager." },
+      "member4": { "name": "Markus Berg", "title": "Environmental Advisor", "alt": "Portrait of Markus Berg, Environmental Advisor." },
+      "cta": "Get to know us better"
+    }
+  },
+  "servicesPage": {
+    "title": "Our Services",
+    "subtitle": "Complete solutions for a circular gypsum economy.",
+    "service1": {
+      "title": "Gypsum Waste Collection",
+      "description": "We offer a flexible and efficient collection service tailored to your project's needs. Our goal is to make it easy for you to manage gypsum waste in an environmentally friendly way.",
+      "alt": "Large bags of gypsum waste ready for collection at a construction site.",
+      "points": [
+        "Delivery of containers and bags in various sizes.",
+        "Flexible collection frequency based on your needs.",
+        "Nationwide coverage.",
+        "Digital ordering and follow-up."
+      ]
+    },
+    "service2": {
+      "title": "Recycling and Processing",
+      "description": "At our state-of-the-art facility, gypsum waste is transformed into a valuable resource. We separate gypsum from paper and impurities through an advanced process that ensures high quality of the final product.",
+      "alt": "Close-up of a machine processing gypsum waste in a recycling plant.",
+      "points": [
+        "Mechanical separation of gypsum and cardboard.",
+        "Cleaning to remove screws, nails, and other foreign elements.",
+        "Grinding into fine gypsum powder (CaSO4).",
+        "Continuous quality control to meet industry standards."
+      ]
+    },
+    "service3": {
+      "title": "Sale of Recycled Gypsum Powder",
+      "description": "Our recycled gypsum powder is a cost-effective and sustainable raw material for manufacturers. By using recycled gypsum, you contribute to reduced CO2 emissions and less extraction of natural resources.",
+      "alt": "A large pile of clean, white recycled gypsum powder.",
+      "points": [
+        "High-quality raw material for the production of new plasterboards.",
+        "Can also be used in cement production and soil improvement.",
+        "Delivered in bulk or big bags.",
+        "Full traceability and documentation."
+      ]
+    }
+  },
+  "howItWorksPage": {
+    "title": "How It Works",
+    "subtitle": "A simple and transparent three-step process.",
+    "step1": {
+      "title": "Order & Delivery",
+      "step": "Step 1",
+      "description": "It all starts with a simple inquiry. You contact us by phone, email, or our contact form. We assess your needs and ensure that the right type and number of containers, whether it's bins or big bags, are delivered to your location at the agreed time."
+    },
+    "step2": {
+      "title": "Collection & Transport",
+      "step": "Step 2",
+      "description": "When the containers are full, you let us know. Our efficient logistics team schedules the collection and ensures that the gypsum waste is transported safely and properly to our receiving facility. We handle all logistics so you can focus on your core business."
+    },
+    "step3": {
+      "title": "Recycling & Reporting",
+      "step": "Step 3",
+      "description": "Upon arrival at our facility, the waste is weighed and registered before entering our advanced recycling process. After processing, you will receive a detailed environmental report. This report documents the amount of waste delivered and your company's positive contribution to the circular economy."
+    }
+  },
+  "aboutUsPage": {
+    "title": "About Gipsgjenvinning AS",
+    "subtitle": "Our mission is to lead the transition to a circular economy for building materials.",
+    "story": {
+      "title": "Our History and Vision",
+      "p1": "Gipsgjenvinning AS was founded in 2010 with a clear vision: to transform how the construction industry handles gypsum waste. We saw enormous potential in a material that too often ended up in landfills.",
+      "p2": "Today, we are Norway's leading player in gypsum recycling. Our vision is a future without gypsum waste, where 100% of all gypsum is converted into new, valuable products. We continuously invest in new technology and expertise to make this vision a reality.",
+      "alt": "Modern recycling plant with a focus on sustainability."
+    },
+    "team": {
+      "title": "Meet Our Dedicated Team",
+      "subtitle": "Our success is driven by people who are passionate about the environment, innovation, and great customer solutions.",
+      "member1": { "name": "Kari Nordmann", "title": "CEO" },
+      "member2": { "name": "Ola Johansen", "title": "Operations Manager" },
+      "member3": { "name": "Silje Eriksen", "title": "Logistics Manager" },
+      "member4": { "name": "Markus Berg", "title": "Environmental Advisor" },
+      "member5": { "name": "Lise Hansen", "title": "CFO" },
+      "member6": { "name": "Espen Larsen", "title": "Sales and Marketing Manager" },
+      "member7": { "name": "Ida Nilsen", "title": "Customer Service Rep" },
+      "member8": { "name": "Jonas Dahl", "title": "Plant Operator" },
+      "altPrefix": "Portrait of"
+    }
+  },
+  "contactPage": {
+    "title": "Contact Us",
+    "subtitle": "We'd love to hear from you! Fill out the form, and we'll get back to you as soon as possible.",
+    "form": {
+      "successTitle": "Thank you for your inquiry!",
+      "successMessage": "We have received your message and will contact you shortly.",
+      "nameLabel": "Full name",
+      "emailLabel": "Email",
+      "phoneLabel": "Phone (optional)",
+      "messageLabel": "Message",
+      "submitButton": "Send Message",
+      "errors": {
+        "nameRequired": "Name is required.",
+        "emailRequired": "Email is required.",
+        "emailInvalid": "Invalid email format.",
+        "messageRequired": "Message is required."
+      }
+    },
+    "details": {
+      "title": "Our Contact Information",
+      "findUs": "Where to Find Us",
+      "mapAlt": "Map showing the location of Gipsgjenvinning AS at Industriveien 10, Oslo.",
+      "mapAriaLabel": "See Industriveien 10 in Google Maps"
+    }
+  },
+  "privacyPage": {
+    "title": "Privacy Policy",
+    "lastUpdated": "Last updated",
+    "section1": {
+      "title": "1. Data Controller",
+      "content": "Gipsgjenvinning AS, through the CEO, is the data controller for the company's processing of personal data."
+    },
+    "section2": {
+      "title": "2. Personal Data Stored",
+      "p1": "We store the following personal data about our customers: Name, address, phone number, and email address. This applies to contact persons at our corporate clients.",
+      "p2": "For visitors to our website, we may store anonymized information via cookies for statistics and website improvement."
+    },
+    "section3": {
+      "title": "3. Purpose of Processing",
+      "content": "We process the information to fulfill our obligations under the agreement with you. We also use the information to provide you with information, offers, and service related to your customer relationship via email, phone, SMS, and mail."
+    },
+    "section4": {
+      "title": "4. Legal Basis for Processing",
+      "p1": "Information on name, address, phone, and email address is used to fulfill the purchase agreement. The legal basis for this processing is Article 6(b) of the GDPR.",
+      "p2": "Where you have consented, the information is also used to provide you with information, offers, and service in connection with your purchase via email, phone, and SMS. The legal basis for this processing is Article 6(a) of the GDPR."
+    },
+    "section5": {
+      "title": "5. Collection of Personal Data",
+      "p1": "We store the personal data you have provided on our contact form on our websites, or through direct contact with our employees.",
+      "p2": "We use cookies on our websites to provide visitors with the best customer experience and service."
+    },
+    "section6": {
+      "title": "6. Your Rights",
+      "content": "You have the right to access your personal data, and the right to request correction, deletion, and restriction of the processing of your personal data. To exercise your rights, please contact us at post@gipsgjenvinning.no."
+    }
+  }
+}
