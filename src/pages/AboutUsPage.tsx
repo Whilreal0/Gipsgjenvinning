@@ -24,7 +24,7 @@ const AboutUsPage: React.FC = () => {
                         </p>
                     </div>
                     <div>
-                        <img src="https://picsum.photos/seed/about/800/600" alt={t('aboutUsPage.story.alt')} className="rounded-lg shadow-lg" loading="lazy" />
+                        <img src="/assets/value-icons/about.png" alt={t('aboutUsPage.story.alt')} className="rounded-lg shadow-lg" loading="lazy" />
                     </div>
                 </div>
             </div>

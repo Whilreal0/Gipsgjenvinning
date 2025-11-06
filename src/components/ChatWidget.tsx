@@ -1,15 +1,16 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { GoogleGenAI, Content } from "@google/genai";
+import { GoogleGenAI, Content } from '@google/genai';
 import { useTranslation } from '../i18n/context';
 import { ChatBubbleIcon } from './icons/ChatBubbleIcon';
 import { CloseIcon } from './icons/CloseIcon';
 import { PaperAirplaneIcon } from './icons/PaperAirplaneIcon';
-import { LogoIcon } from './icons/LogoIcon';
 
 type Message = {
     sender: 'user' | 'ai' | 'error';
     text: string;
 };
+
+const FALLBACK_ERROR = 'Sorry, I am quite busy right now. Please try again in a moment.';
 
 const ChatWidget: React.FC = () => {
     const { t } = useTranslation();
@@ -24,12 +25,19 @@ const ChatWidget: React.FC = () => {
     };
 
     useEffect(scrollToBottom, [messages]);
-    
+
     useEffect(() => {
-        if(isOpen && messages.length === 0) {
-             setMessages([{ sender: 'ai', text: t('chatWidget.welcomeMessage') }]);
+        if (isOpen && messages.length === 0) {
+            setMessages([{ sender: 'ai', text: t('chatWidget.welcomeMessage') }]);
         }
     }, [isOpen, messages.length, t]);
+
+    useEffect(() => {
+        if (typeof window === 'undefined') return;
+        const handleExternalClose = () => setIsOpen(false);
+        window.addEventListener('chat:close', handleExternalClose);
+        return () => window.removeEventListener('chat:close', handleExternalClose);
+    }, []);
 
     const handleSend = async () => {
         if (inputValue.trim() === '' || isLoading) return;
@@ -43,14 +51,14 @@ const ChatWidget: React.FC = () => {
             const apiKey = process.env.GEMINI_API_KEY as string | undefined;
             if (!apiKey) {
                 console.error('Missing GEMINI_API_KEY. Please set it in your environment variables.');
-                setMessages(prev => [...prev, { sender: 'error', text: t('chatWidget.errorMessage') }]);
+                setMessages(prev => [...prev, { sender: 'error', text: FALLBACK_ERROR }]);
                 setIsLoading(false);
                 return;
             }
 
             const ai = new GoogleGenAI({ apiKey });
-            
-            const systemInstruction = `You are Chat Assistant for Gipsgjenvinning AS.
+
+            const systemInstruction = `You are GIPS GJENVINNING Chat Assistant for Gipsgjenvinning AS.
 - Primary language: Norwegian (Bokmål). If the user writes in English, answer in English.
 - Always give short, tidy replies without markdown bold styling.
 - Contact facts (only mention the ones requested and keep the wording clean):
@@ -63,25 +71,23 @@ const ChatWidget: React.FC = () => {
 
             const chatHistory: Content[] = messages.map(msg => ({
                 role: msg.sender === 'ai' ? 'model' : 'user',
-                parts: [{ text: msg.text }]
+                parts: [{ text: msg.text }],
             }));
-             chatHistory.push({ role: 'user', parts: [{ text: inputValue }] });
-
+            chatHistory.push({ role: 'user', parts: [{ text: inputValue }] });
 
             const response = await ai.models.generateContent({
                 model: 'gemini-2.5-flash',
                 contents: chatHistory,
-                 config: {
-                    systemInstruction: systemInstruction,
-                 },
+                config: {
+                    systemInstruction,
+                },
             });
-            
+
             const aiResponseText = response.text;
             setMessages(prev => [...prev, { sender: 'ai', text: aiResponseText }]);
-
         } catch (error) {
             console.error('Gemini API error:', error);
-            setMessages(prev => [...prev, { sender: 'error', text: t('chatWidget.errorMessage') }]);
+            setMessages(prev => [...prev, { sender: 'error', text: FALLBACK_ERROR }]);
         } finally {
             setIsLoading(false);
         }
@@ -111,15 +117,11 @@ const ChatWidget: React.FC = () => {
                 {/* Header */}
                 <div className="flex-shrink-0 bg-primary-dark text-white p-4 flex justify-between items-center rounded-t-lg">
                     <div className="flex items-center space-x-2">
-                        <LogoIcon className="h-6 w-auto" monochromeColor="white" />
-                        <h3 className="font-bold font-heading">{t('chatWidget.title')}</h3>
+                        <img src="/assets/LOGO_ONLY.png" alt="Gipsgjenvinning AI Assistant" className="h-6 w-6" />
+                        <h3 className="font-bold font-heading text-lg">{t('chatWidget.title')}</h3>
                     </div>
-                    <button
-                        onClick={() => setIsOpen(false)}
-                        aria-label="Close chat"
-                        className="rounded-full p-1 transition hover:bg-white/20"
-                    >
-                        <CloseIcon className="h-5 w-5" />
+                    <button onClick={() => setIsOpen(false)} aria-label="Close chat" className="rounded-full p-1 transition hover:bg-white/20">
+                        <CloseIcon className="h-6 w-6" />
                     </button>
                 </div>
 
@@ -128,14 +130,12 @@ const ChatWidget: React.FC = () => {
                     <div className="space-y-4">
                         {messages.map((msg, index) => (
                             <div key={index} className={`flex ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}>
-                                {msg.sender === 'error' ? (
-                                     <div className="bg-red-100 text-red-800 rounded-lg p-3 max-w-xs">{msg.text}</div>
-                                ):(
-                                     <div className={`rounded-lg p-3 max-w-xs ${msg.sender === 'user' ? 'bg-accent text-white' : 'bg-white text-text-main shadow-sm'}`}>{msg.text}</div>
-                                )}
+                                <div className={`rounded-lg p-3 max-w-xs ${msg.sender === 'user' ? 'bg-accent text-white' : 'bg-white text-text-main shadow-sm'}`}>
+                                    {msg.text}
+                                </div>
                             </div>
                         ))}
-                         {isLoading && (
+                        {isLoading && (
                             <div className="flex justify-start">
                                 <div className="bg-white text-text-main shadow-sm rounded-lg p-3 max-w-xs flex items-center space-x-2">
                                     <span className="animate-pulse">...</span>
@@ -145,21 +145,25 @@ const ChatWidget: React.FC = () => {
                         <div ref={messagesEndRef} />
                     </div>
                 </div>
-                
+
                 {/* Input */}
                 <div className="flex-shrink-0 p-4 border-t bg-white rounded-b-lg">
                     <div className="flex items-center space-x-2">
                         <input
                             type="text"
                             value={inputValue}
-                            onChange={(e) => setInputValue(e.target.value)}
-                            onKeyPress={(e) => e.key === 'Enter' && handleSend()}
+                            onChange={e => setInputValue(e.target.value)}
+                            onKeyPress={e => e.key === 'Enter' && handleSend()}
                             placeholder={t('chatWidget.inputPlaceholder')}
                             className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary-dark focus:border-primary-dark"
                             disabled={isLoading}
                         />
-                        <button onClick={handleSend} disabled={isLoading || inputValue.trim() === ''} className="bg-accent text-white p-3 rounded-md hover:bg-green-600 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors">
-                            <PaperAirplaneIcon className="h-5 w-5"/>
+                        <button
+                            onClick={handleSend}
+                            disabled={isLoading || inputValue.trim() === ''}
+                            className="bg-accent text-white p-3 rounded-md hover:bg-green-600 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors"
+                        >
+                            <PaperAirplaneIcon className="h-5 w-5" />
                         </button>
                     </div>
                 </div>

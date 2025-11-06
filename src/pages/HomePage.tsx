@@ -53,24 +53,35 @@ const HomePage: React.FC = () => {
     return (
         <>
             {/* Hero Section */}
-            <section className="bg-primary-light pt-20 pb-20 md:pt-32 md:pb-32 text-center relative overflow-hidden">
-                <div className="absolute -top-1/4 -right-1/4 z-0 opacity-[0.03]">
-                    <LogoIcon className="w-[800px] h-auto transform rotate-12" monochromeColor="#0E4B4F" />
+            <section className="relative min-h-screen py-20 md:py-32 overflow-hidden flex items-center">
+                <div className="absolute inset-0">
+                    <img
+                        src="/assets/value-icons/hero-section.jpg"
+                        alt={t('home.hero.title')}
+                        className="w-full h-full object-cover object-[center_25%]"
+                        loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-r from-primary-dark/90 via-primary-dark/80 to-primary-dark/60" />
+                </div>
+                <div className="absolute -top-1/4 -right-1/4 z-0 opacity-[0.05]">
+                    <LogoIcon className="w-[800px] h-auto transform rotate-12 text-white/20" monochromeColor="#ffffff" />
                 </div>
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                    <h1 className="text-4xl md:text-6xl font-extrabold text-primary-dark font-heading leading-tight">
-                        {t('home.hero.title')}
-                    </h1>
-                    <p className="mt-4 max-w-3xl mx-auto text-lg md:text-xl text-text-main">
-                        {t('home.hero.subtitle')}
-                    </p>
-                    <div className="mt-8 flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-                        <button onClick={() => navigate(pageRoutes.tjenester)} className="bg-accent text-white font-bold py-3 px-8 rounded-full text-lg hover:bg-green-600 transition-colors duration-300 btn-lift">
-                            {t('home.hero.ctaServices')}
-                        </button>
-                        <button onClick={() => navigate(pageRoutes.kontakt)} className="bg-white text-primary-dark font-bold py-3 px-8 rounded-full text-lg hover:bg-gray-100 transition-colors duration-300 btn-lift border border-gray-300 hover:border-primary-dark">
-                            {t('home.hero.ctaContact')}
-                        </button>
+                    <div className="max-w-3xl text-center md:text-left text-white">
+                        <h1 className="text-4xl md:text-6xl font-extrabold font-heading leading-tight">
+                            {t('home.hero.title')}
+                        </h1>
+                        <p className="mt-4 text-lg md:text-xl text-white/90">
+                            {t('home.hero.subtitle')}
+                        </p>
+                        <div className="mt-8 flex flex-col sm:flex-row md:justify-start justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+                            <button onClick={() => navigate(pageRoutes.tjenester)} className="bg-accent text-white font-bold py-3 px-8 rounded-full text-lg hover:bg-green-600 transition-colors duration-300 btn-lift">
+                                {t('home.hero.ctaServices')}
+                            </button>
+                            <button onClick={() => navigate(pageRoutes.kontakt)} className="bg-white text-primary-dark font-bold py-3 px-8 rounded-full text-lg hover:bg-gray-100 transition-colors duration-300 btn-lift border border-white/30 hover:border-white">
+                                {t('home.hero.ctaContact')}
+                            </button>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -83,9 +94,9 @@ const HomePage: React.FC = () => {
                          <p className="mt-3 max-w-2xl mx-auto text-lg text-text-main">{t('home.services.subtitle')}</p>
                     </div>
                     <div className="grid md:grid-cols-3 gap-8">
-                        <ServiceCard imgSrc="https://picsum.photos/seed/gips1/600/400" title={t('home.services.card1.title')} description={t('home.services.card1.description')} alt={t('home.services.card1.alt')} />
-                        <ServiceCard imgSrc="https://picsum.photos/seed/gips2/600/400" title={t('home.services.card2.title')} description={t('home.services.card2.description')} alt={t('home.services.card2.alt')} />
-                        <ServiceCard imgSrc="https://picsum.photos/seed/gips3/600/400" title={t('home.services.card3.title')} description={t('home.services.card3.description')} alt={t('home.services.card3.alt')} />
+                        <ServiceCard imgSrc="/assets/value-icons/Gypsum Collection.jpg" title={t('home.services.card1.title')} description={t('home.services.card1.description')} alt={t('home.services.card1.alt')} />
+                        <ServiceCard imgSrc="/assets/value-icons/Recycling and Processing.jpg" title={t('home.services.card2.title')} description={t('home.services.card2.description')} alt={t('home.services.card2.alt')} />
+                        <ServiceCard imgSrc="/assets/value-icons/Sale of Recycled Gypsum.jpg" title={t('home.services.card3.title')} description={t('home.services.card3.description')} alt={t('home.services.card3.alt')} />
                     </div>
                 </div>
             </section>

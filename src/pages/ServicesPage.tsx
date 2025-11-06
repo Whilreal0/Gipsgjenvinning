@@ -44,14 +44,14 @@ const ServicesPage: React.FC = () => {
                     <ServiceSummaryCard
                         title={t('navServicesDropdown.storage')}
                         description={t('storageAndCollectionPage.subtitle')}
-                        imgSrc="https://picsum.photos/seed/service1/800/600"
+                        imgSrc="/assets/value-icons/Gypsum Collection.jpg"
                         alt={t('storageAndCollectionPage.alt')}
                         onClick={() => navigate(pageRoutes.lagringOgHenting)}
                     />
                     <ServiceSummaryCard
                         title={t('navServicesDropdown.process')}
                         description={t('recyclingProcessPage.subtitle')}
-                        imgSrc="https://picsum.photos/seed/service2/800/600"
+                        imgSrc="/assets/value-icons/Recycling and Processing.jpg"
                         alt={t('recyclingProcessPage.alt')}
                         onClick={() => navigate(pageRoutes.gjenvinningsprosessen)}
                         reverse={true}
@@ -59,7 +59,7 @@ const ServicesPage: React.FC = () => {
                      <ServiceSummaryCard
                         title={t('navServicesDropdown.product')}
                         description={t('finishedProductPage.subtitle')}
-                        imgSrc="https://picsum.photos/seed/service3/800/600"
+                        imgSrc="/assets/value-icons/Sale of Recycled Gypsum.jpg"
                         alt={t('finishedProductPage.alt')}
                         onClick={() => navigate(pageRoutes.ferdigProdukt)}
                     />

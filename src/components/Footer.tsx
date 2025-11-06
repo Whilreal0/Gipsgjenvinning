@@ -18,23 +18,23 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
 
     return (
         <footer className="bg-primary-dark text-white footer-bg-pattern">
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
-                <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
                     {/* Column 1: Logo & Info */}
                     <div className="md:col-span-1">
                         <img
                             src="/assets/value-icons/logo.png"
                             alt={t('header.logoLabel')}
-                            className="mb-4 h-14 w-auto rounded-lg border border-white/10 bg-white/10 p-2 shadow-lg backdrop-blur"
+                            className="mb-4 h-14 w-auto brightness-125 contrast-110 drop-shadow-[0_0_10px_rgba(0,0,0,0.25)]"
                         />
                         <p className="text-primary-light text-sm">{t('footer.tagline')}</p>
-                        <p className="text-primary-light text-sm mt-4">{t('footer.orgNr')}</p>
+                        <p className="text-primary-light text-sm mt-3">{t('footer.orgNr')}</p>
                     </div>
                     
                     {/* Column 2: Navigation */}
                     <div>
-                        <h3 className="font-heading text-lg font-semibold mb-4">{t('footer.menu')}</h3>
-                        <ul className="space-y-2">
+                        <h3 className="font-heading text-lg font-semibold mb-3">{t('footer.menu')}</h3>
+                        <ul className="space-y-1.5">
                             {navLinks.map(page => (
                                 <li key={page}>
                                     <button onClick={() => onNavigate(page)} className="text-primary-light hover:text-white transition-colors">{t(`nav.${page}`)}</button>
@@ -45,8 +45,8 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
 
                     {/* Column 3: Contact */}
                     <div>
-                        <h3 className="font-heading text-lg font-semibold mb-4">{t('footer.contact')}</h3>
-                        <ul className="space-y-3 text-primary-light">
+                        <h3 className="font-heading text-lg font-semibold mb-3">{t('footer.contact')}</h3>
+                        <ul className="space-y-2 text-primary-light">
                             <li className="flex items-start">
                                 <MapPinIcon className="h-5 w-5 mr-3 mt-1 flex-shrink-0" />
                                 <span>{t('footer.address')}</span>
@@ -64,8 +64,8 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                     
                     {/* Column 4: Legal & Social */}
                      <div>
-                        <h3 className="font-heading text-lg font-semibold mb-4">{t('footer.legal')}</h3>
-                        <ul className="space-y-2">
+                        <h3 className="font-heading text-lg font-semibold mb-3">{t('footer.legal')}</h3>
+                        <ul className="space-y-1.5">
                              {legalLinks.map(page => (
                                 <li key={page}>
                                     <button onClick={() => onNavigate(page)} className="text-primary-light hover:text-white transition-colors">{t(`nav.${page}`)}</button>
@@ -73,8 +73,8 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                             ))}
                         </ul>
 
-                        <div className="mt-6">
-                            <h3 className="font-heading text-lg font-semibold mb-4">{t('footer.social.title')}</h3>
+                        <div className="mt-5">
+                            <h3 className="font-heading text-lg font-semibold mb-3">{t('footer.social.title')}</h3>
                             <div className="flex space-x-4">
                                 <a href={t('footer.social.linkedinUrl')} target="_blank" rel="noopener noreferrer" aria-label={t('footer.social.linkedinAria')} className="text-primary-light hover:text-white transition-colors">
                                     <LinkedInIcon className="h-6 w-6" />
@@ -87,7 +87,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                     </div>
                 </div>
 
-                <div className="mt-8 pt-8 border-t border-gray-700 text-center text-sm text-gray-400">
+                <div className="mt-6 pt-6 border-t border-gray-700 text-center text-sm text-gray-400">
                     <p>&copy; {new Date().getFullYear()} Gipsgjenvinning AS. {t('footer.copyright')}</p>
                 </div>
             </div>

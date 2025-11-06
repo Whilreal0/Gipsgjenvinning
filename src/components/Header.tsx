@@ -45,6 +45,7 @@ const Header: React.FC<HeaderProps> = ({ currentPage, onNavigate }) => {
     const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false);
     const { t } = useTranslation();
     const servicesTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+    const bodyOverflowRef = useRef<string>('');
 
     useEffect(() => {
         const handleScroll = () => setIsScrolled(window.scrollY > 10);
@@ -78,8 +79,33 @@ const Header: React.FC<HeaderProps> = ({ currentPage, onNavigate }) => {
         }, 200);
     };
 
+    useEffect(() => {
+        if (typeof document === 'undefined' || typeof window === 'undefined') return;
+        if (!bodyOverflowRef.current) {
+            bodyOverflowRef.current = document.body.style.overflow || '';
+        }
+        if (isMenuOpen && window.innerWidth < 768) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = bodyOverflowRef.current;
+        }
+        return () => {
+            document.body.style.overflow = bodyOverflowRef.current;
+        };
+    }, [isMenuOpen]);
+
+    const toggleMenu = () => {
+        const nextIsOpen = !isMenuOpen;
+        setIsMenuOpen(nextIsOpen);
+        if (nextIsOpen) {
+            window.dispatchEvent(new CustomEvent('chat:close'));
+        } else {
+            setIsMobileServicesOpen(false);
+        }
+    };
+
     return (
-        <header className={`sticky top-0 z-40 transition-shadow duration-300 ${isScrolled ? 'shadow-md bg-white/80 backdrop-blur-lg' : 'bg-transparent'}`}>
+        <header className={`sticky top-0 z-40 transition-shadow duration-300 ${isScrolled ? 'shadow-md bg-white/80 backdrop-blur-lg' : 'bg-transparent'} relative`}>
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between h-20">
                     <div className="flex items-center">
@@ -135,15 +161,30 @@ const Header: React.FC<HeaderProps> = ({ currentPage, onNavigate }) => {
                         </button>
                     </div>
                     <div className="md:hidden flex items-center">
-                        <button onClick={() => setIsMenuOpen(!isMenuOpen)} aria-label={isMenuOpen ? t('header.closeMenu') : t('header.openMenu')} aria-expanded={isMenuOpen}>
+                        <button onClick={toggleMenu} aria-label={isMenuOpen ? t('header.closeMenu') : t('header.openMenu')} aria-expanded={isMenuOpen}>
                            {isMenuOpen ? <CloseIcon className="h-7 w-7 text-text-main" /> : <MenuIcon className="h-7 w-7 text-text-main" />}
                         </button>
                     </div>
                 </div>
             </div>
 
-            {isMenuOpen && (
-                <div className="md:hidden bg-white shadow-lg">
+            <div
+                className={`md:hidden fixed inset-0 top-20 z-30 transition-opacity duration-300 ${
+                    isMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+                }`}
+                aria-hidden={!isMenuOpen}
+            >
+                <div
+                    className={`absolute inset-0 bg-black/40 backdrop-blur-md transition-opacity duration-300 ${
+                        isMenuOpen ? 'opacity-100' : 'opacity-0'
+                    }`}
+                    onClick={toggleMenu}
+                />
+                <div
+                    className={`absolute left-0 right-0 top-0 bg-white shadow-lg rounded-b-2xl overflow-hidden transform transition-all duration-300 ease-out ${
+                        isMenuOpen ? 'translate-y-0 opacity-100' : '-translate-y-3 opacity-0'
+                    }`}
+                >
                     <nav className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                         {navLinks.map((link) => {
                             const isActive = currentPage === link.page || (link.dropdown?.some(item => item.page === currentPage) ?? false);
@@ -181,7 +222,7 @@ const Header: React.FC<HeaderProps> = ({ currentPage, onNavigate }) => {
                         </button>
                     </div>
                 </div>
-            )}
+            </div>
         </header>
     );
 };

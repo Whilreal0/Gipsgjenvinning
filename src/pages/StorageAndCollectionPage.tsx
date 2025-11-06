@@ -19,7 +19,7 @@ const StorageAndCollectionPage: React.FC = () => {
                     <ServiceDetail
                         title={t('storageAndCollectionPage.title')}
                         description={t('storageAndCollectionPage.subtitle')}
-                        imgSrc="https://picsum.photos/seed/service1/800/600"
+                        imgSrc="/assets/value-icons/Gypsum Collection.jpg"
                         alt={t('storageAndCollectionPage.alt')}
                         points={t('storageAndCollectionPage.points')}
                     />

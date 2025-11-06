@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ChevronUpIcon } from './icons/ChevronUpIcon';
+import { ArrowUpIcon } from './icons/ArrowUpIcon';
 
 const BackToTopButton: React.FC = () => {
     const [isVisible, setIsVisible] = useState(false);
@@ -35,18 +35,18 @@ const BackToTopButton: React.FC = () => {
     }, [isVisible]);
 
     return (
-        <div className="fixed bottom-20 right-3 sm:right-5 z-[999] flex flex-col items-end gap-2">
+        <div className="fixed bottom-[4.25rem] right-3 sm:right-5 z-[999] flex flex-col items-end gap-2">
             <button
                 type="button"
                 onClick={scrollToTop}
                 className={`
-                    bg-accent text-white rounded-full p-2.5 shadow-lg hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent btn-lift
+                    bg-primary-dark text-white rounded-full h-10 w-10 flex items-center justify-center shadow-lg hover:bg-primary-dark/80 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-dark/40
                     transition-all duration-500 ease-out
-                    ${isVisible ? 'opacity-100 scale-100 translate-y-0' : 'opacity-0 scale-75 translate-y-4 pointer-events-none'}
+                    ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'}
                 `}
                 aria-label="Gå til toppen"
             >
-                <ChevronUpIcon className="h-5 w-5" />
+                <ArrowUpIcon className="h-5 w-5 sm:h-[22px] sm:w-[22px]" />
             </button>
         </div>
     );

@@ -17,6 +17,17 @@ const RecyclingProcessPage: React.FC = () => {
                     <p className="mt-4 text-xl text-text-main max-w-3xl mx-auto">
                         {t('recyclingProcessPage.subtitle')}
                     </p>
+                    <p className="mt-6 text-lg text-text-main max-w-4xl mx-auto">
+                        {t('recyclingProcessPage.summary')}
+                    </p>
+                    <div className="mt-10 max-w-5xl mx-auto">
+                        <img
+                            src="/assets/value-icons/Recycling and Processing.jpg"
+                            alt={t('recyclingProcessPage.imageAlt')}
+                            className="w-full h-96 object-cover rounded-2xl shadow-xl border border-white/40"
+                            loading="lazy"
+                        />
+                    </div>
                 </div>
             </div>
 

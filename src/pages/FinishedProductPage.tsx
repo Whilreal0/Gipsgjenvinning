@@ -19,7 +19,7 @@ const FinishedProductPage: React.FC = () => {
                     <ServiceDetail
                         title={t('finishedProductPage.title')}
                         description={t('finishedProductPage.subtitle')}
-                        imgSrc="https://picsum.photos/seed/service3/800/600"
+                        imgSrc="/assets/value-icons/Sale of Recycled Gypsum.jpg"
                         alt={t('finishedProductPage.alt')}
                         points={t('finishedProductPage.points')}
                     />
