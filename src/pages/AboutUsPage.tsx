@@ -1,47 +1,10 @@
 import React from 'react';
 import { useTranslation } from '../i18n/context';
 import TeamMemberCard from '../components/TeamMemberCard';
+import { teamMembers } from '../data/team';
 
 const AboutUsPage: React.FC = () => {
     const { t } = useTranslation();
-
-    const teamMembers = [
-        {
-            name: 'Espen Hurrod',
-            titleKey: 'generalManager',
-            phone: '410 06 505',
-            email: null,
-            imgSeed: 'espen'
-        },
-        {
-            name: 'Joacim Holten The Gorge',
-            titleKey: 'teamLeader',
-            phone: null,
-            email: 'joacim@gipsgjenvinn.no',
-            imgSeed: 'joacim'
-        },
-        {
-            name: 'Daniel Andre Jensen',
-            titleKey: 'productionWorker',
-            phone: null,
-            email: null,
-            imgSeed: 'daniel'
-        },
-        {
-            name: 'Sara-Helen Larsen',
-            titleKey: 'adminAndProduction',
-            phone: null,
-            email: 'sara@gipsgjenvinn.no',
-            imgSeed: 'sara'
-        },
-        {
-            name: 'Jonas Makksund Marberg',
-            titleKey: 'machineOperator',
-            phone: null,
-            email: null,
-            imgSeed: 'jonas'
-        },
-    ];
 
     return (
         <>
@@ -76,7 +39,7 @@ const AboutUsPage: React.FC = () => {
                                 key={member.name}
                                 name={member.name}
                                 title={t(`aboutUsPage.team.roles.${member.titleKey}`)}
-                                imgSrc={`https://source.boringavatars.com/marble/300/${member.name.replace(/\s/g, '')}?colors=0E4B4F,D7EEE9,F9FBFC,1E2328,2FBF71`}
+                                imgSrc={member.imgUrl}
                                 alt={`${t('aboutUsPage.team.altPrefix')} ${member.name}, ${t(`aboutUsPage.team.roles.${member.titleKey}`)}`}
                                 phone={member.phone}
                                 email={member.email}

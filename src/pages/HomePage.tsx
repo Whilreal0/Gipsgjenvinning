@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { pageRoutes } from '../routes';
+import { teamMembers } from '../data/team';
 import { ChevronRightIcon } from '../components/icons/ChevronRightIcon';
 import { useTranslation } from '../i18n/context';
 import { LogoIcon } from '../components/icons/LogoIcon';
@@ -42,13 +43,6 @@ const TeamMember: React.FC<{ imgSrc: string; name: string; title: string; alt: s
 const HomePage: React.FC = () => {
     const { t } = useTranslation();
     const navigate = useNavigate();
-
-    const teamMembers = [
-        { name: 'Espen Hurrod', titleKey: 'generalManager' },
-        { name: 'Joacim Holten The Gorge', titleKey: 'teamLeader' },
-        { name: 'Daniel Andre Jensen', titleKey: 'productionWorker' },
-        { name: 'Sara-Helen Larsen', titleKey: 'adminAndProduction' },
-    ];
 
     const values = [
         { key: 'value1', iconSrc: '/assets/value-icons/1.png' },
@@ -143,10 +137,10 @@ const HomePage: React.FC = () => {
                     <h2 className="text-3xl md:text-4xl font-extrabold text-primary-dark font-heading">{t('home.about.title')}</h2>
                     <p className="mt-3 max-w-2xl mx-auto text-lg text-text-main">{t('home.about.subtitle')}</p>
                     <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
-                        {teamMembers.map((member) => (
+                        {teamMembers.slice(0, 4).map((member) => (
                            <TeamMember
                                 key={member.name}
-                                imgSrc={`https://source.boringavatars.com/marble/200/${member.name.replace(/\s/g, '')}?colors=0E4B4F,D7EEE9,F9FBFC,1E2328,2FBF71`}
+                                imgSrc={member.imgUrl}
                                 name={member.name}
                                 title={t(`aboutUsPage.team.roles.${member.titleKey}`)}
                                 alt={`${t('aboutUsPage.team.altPrefix')} ${member.name}, ${t(`aboutUsPage.team.roles.${member.titleKey}`)}`}

@@ -109,11 +109,12 @@ const ContactPage: React.FC = () => {
                                             <textarea name="message" id="message" rows={5} value={formData.message} onChange={handleChange} className={`mt-1 block w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-primary-dark focus:border-primary-dark ${errors.message ? 'border-red-500' : 'border-gray-300'}`}></textarea>
                                             {errors.message && <p className="mt-1 text-sm text-red-600">{errors.message}</p>}
                                         </div>
-                                        <div>
+                                        <div className="flex justify-center">
                                             <HCaptcha
                                                 sitekey={siteKey}
                                                 onVerify={handleHcaptchaVerify}
                                                 onExpire={handleHcaptchaExpire}
+                                                className=""
                                             />
                                             {(errors.captcha || captchaError) && (
                                                 <p className="mt-1 text-sm text-red-600">
