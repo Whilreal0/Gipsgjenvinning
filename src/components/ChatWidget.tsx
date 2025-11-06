@@ -39,6 +39,22 @@ const ChatWidget: React.FC = () => {
         return () => window.removeEventListener('chat:close', handleExternalClose);
     }, []);
 
+    useEffect(() => {
+        if (typeof document === 'undefined') {
+            return;
+        }
+        const previousOverflow = document.body.style.overflow || '';
+        if (isOpen) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = previousOverflow;
+        }
+
+        return () => {
+            document.body.style.overflow = previousOverflow;
+        };
+    }, [isOpen]);
+
     const handleSend = async () => {
         if (inputValue.trim() === '' || isLoading) return;
 
